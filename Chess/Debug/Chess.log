@@ -1,0 +1,38 @@
+﻿  Chess.cpp
+C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Chess\Chess.cpp(16,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Chess\Chess.cpp(24,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Chess\Chess.cpp(35,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Chess\Chess.cpp(45,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Chess\Chess.cpp(55,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Chess\Chess.cpp(65,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Chess\Chess.cpp(75,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Chess\Chess.cpp(108,52): warning C4805: !=: небезопасное смешение типа "int" и типа "bool" в операции
+  Desk.cpp
+  Figure.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\utility(192,16): warning C4244: инициализация: преобразование "_Ty" в "_Ty1", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
+          and
+          [
+              _Ty1=int
+          ]
+C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Chess\Figure.cpp(198): message : выполняется компиляция ссылки на экземпляр шаблон функции "std::pair<int,int>::pair<double,_Ty2&,0>(_Other1 &&,_Other2) noexcept"
+          with
+          [
+              _Ty2=int,
+              _Other1=double,
+              _Other2=int &
+          ]
+C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Chess\Figure.cpp(198): message : выполняется компиляция ссылки на экземпляр шаблон функции "std::pair<int,int>::pair<double,_Ty2&,0>(_Other1 &&,_Other2) noexcept"
+          with
+          [
+              _Ty2=int,
+              _Other1=double,
+              _Other2=int &
+          ]
+  main.cpp
+  Создание кода...
+C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Chess\Chess.cpp(87): warning C4715: Game::possible_move: значение возвращается не при всех путях выполнения
+  Chess.vcxproj -> C:\Users\khusn\OneDrive\Документы\GitHub\Chess\Debug\Chess.exe
