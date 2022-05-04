@@ -37,7 +37,8 @@ bool Game::possible_move(Figure* _piece, int _x, int _y)
 			if (temp_possible[ind] == make_pair(_x, _y) &&
 				board[_x][_y]->get_name() != 'K' &&
 				board[_x][_y]->get_team() != _piece->get_team())
-				return true;
+				if (this->check_between(_piece, _x, _y))
+					return true;
 		}
 		return false;
 		break;
@@ -48,6 +49,16 @@ bool Game::possible_move(Figure* _piece, int _x, int _y)
 				board[_x][_y]->get_name() != 'K' &&
 				board[_x][_y]->get_team() != _piece->get_team())
 				return true;
+		}
+		if (!_piece->get_moved())
+		{
+			/*if (_x == _piece->get_coord().second && abs(_piece->get_coord().first - _y) == 2)
+			{
+				if (_piece->get_coord().first - _y < 0 && board[pow(7, _piece->get_team()) - 1][7])
+				{
+
+				}
+			}*/
 		}
 		return false;
 		break;
@@ -67,7 +78,8 @@ bool Game::possible_move(Figure* _piece, int _x, int _y)
 			if (temp_possible[ind] == make_pair(_x, _y) &&
 				board[_x][_y]->get_name() != 'K' &&
 				board[_x][_y]->get_team() != _piece->get_team())
-				return true;
+				if (this->check_between(_piece, _x, _y))
+					return true;
 		}
 		return false;
 		break;
@@ -77,12 +89,54 @@ bool Game::possible_move(Figure* _piece, int _x, int _y)
 			if (temp_possible[ind] == make_pair(_x, _y) &&
 				board[_x][_y]->get_name() != 'K' &&
 				board[_x][_y]->get_team() != _piece->get_team())
-				return true;
+				if (this->check_between(_piece, _x, _y))
+					return true;
 		}
 		return false;
 		break;
 	default:
 		break;
+	}
+}
+bool Game::check_between(Figure* _piece, int _x, int _y)
+{
+	int vectorX, vectorY;
+	pair<int, int> coord = _piece->get_coord();
+	Figure*** board = this->desk->get_board();
+	switch (_piece->get_name())
+	{
+	case 'B':
+		vectorX = abs(coord.first - _x) / (coord.first - _x);
+		vectorY = abs(coord.second - _y) / (coord.second - _y);
+		for (int ind = 1; ind < abs(coord.first - _x); ind++)
+		{
+			if (board[_x + vectorX * ind][_y + vectorY * ind]->get_name() != 'n')
+				return false;
+		}
+		return true;
+	case 'Q':
+		vectorX = (coord.first - _x != 0) ? abs(coord.first - _x) / (coord.first - _x) : 0;
+		vectorY = (coord.second - _y != 0) ? abs(coord.second - _y) / (coord.second - _y) : 0;
+		for (int ind = 1; ind < abs(coord.first - _x); ind++)
+		{
+			if (board[_x + vectorX * ind][_y + vectorY * ind]->get_name() != 'n')
+				return false;
+		}
+		for (int ind = 1; ind < abs(coord.second - _y); ind++)
+		{
+			if (board[_x + vectorX * ind][_y + vectorY * ind]->get_name() != 'n')
+				return false;
+		}
+		return true;
+	case 'R':
+		vectorX = (coord.first - _x != 0) ? abs(coord.first - _x) / (coord.first - _x) : 0;
+		vectorY = (coord.second - _y != 0) ? abs(coord.second - _y) / (coord.second - _y) : 0;
+		for (int ind = 1; ind < abs(coord.first - _x) + abs(coord.second - _y); ind++)
+		{
+			if (board[_x + vectorX * ind][_y + vectorY * ind]->get_name() != 'n')
+				return false;
+		}
+		return true;
 	}
 }
 void Game::run()

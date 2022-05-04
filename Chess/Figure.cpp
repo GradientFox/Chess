@@ -6,6 +6,7 @@
 void Figure::move(int _row, int _col)
 {
 	this->coord = { _row, _col };
+	this->set_moved();
 	this->update_possible();
 }
 pair<int, int> Figure::get_coord() { return this->coord; }
@@ -13,6 +14,8 @@ char Figure::get_name() { return this->name; }
 int Figure::get_team() { return this->team; }
 void Figure::update_possible() {}
 vector<pair<int, int>> Figure::get_possible() { return this->possible; }
+void Figure::set_moved() { this->moved = true; }
+bool Figure::get_moved() { return this->moved; }
 ///////////////////////////////////////////////////
 // defining King methods
 ///////////////////////////////////////////////////
@@ -194,8 +197,9 @@ Pawn::Pawn(int _row, int _col, int _team)
 void Pawn::update_possible()
 {
 	this->possible.clear();
-	if ((this->coord.first + pow(-2, this->team) < 8) && (this->coord.first + pow(-2, this->team) >= 0))
-		this->possible.push_back({ this->coord.first + pow(-2, this->team) , this->coord.second });
+	if ((this->coord.first + 2 * pow(-1, this->team) < 8) && (this->coord.first + 2 * pow(-1, this->team) >= 0) && 
+		!this->moved)
+		this->possible.push_back({ this->coord.first + 2 * pow(-1, this->team) , this->coord.second });
 	if ((this->coord.first + pow(-1, this->team) < 8) && (this->coord.first + pow(-1, this->team) >= 0))
 	{
 		this->possible.push_back({ this->coord.first + pow(-1, this->team), this->coord.second });

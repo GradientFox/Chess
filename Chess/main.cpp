@@ -1,8 +1,6 @@
 #include "Figure.h"
 #include "Desk.h"
 #include "Chess.h"
-#include <Windows.h>
-#include <iostream>
 using namespace std;
 
 

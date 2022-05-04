@@ -18,11 +18,14 @@ public:
 	virtual int get_team();
 	virtual void update_possible() = 0;
 	virtual vector<pair<int, int>> get_possible();
+	virtual void set_moved();
+	virtual bool get_moved();
 protected:
 	pair <int, int> coord = {0, 0}; // {row, col}
 	int team = -1; // 0/1  First team = 0 ; Second team = 1; None = -1
 	char name = 'n'; // Name : {'K' - "King", 'Q' - "Queen", 'B' - "Bishop", 'H' - "Hourse", 'R' - "Rook", 'P' - "Pawn", 'n' - "none"}
 	vector<pair<int, int>> possible = {}; // Possible coord to next move
+	bool moved = false; // Was the piece moved?
 };
 class King : public Figure
 {

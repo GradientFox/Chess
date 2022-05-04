@@ -13,6 +13,7 @@ private:
 public:
 	Game();
 	bool possible_move(Figure* _piece, int _x, int _y);
+	bool check_between(Figure*, int, int);
 	void move(Figure* _piece, int _x, int _y);
 	void run();
 };
